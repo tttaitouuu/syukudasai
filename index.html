@@ -2,9 +2,9 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <title>AR Custom Marker Test</title>
+    <title>AR Video Test</title>
 
-    <!-- A-Frame & AR.js（HIROで動いたのと同じ組み合わせ） -->
+    <!-- A-Frame & AR.js（さっき赤い箱が出た組み合わせ） -->
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/3.4.7/aframe/build/aframe-ar.js"></script>
   </head>
@@ -16,13 +16,30 @@
       arjs="sourceType: webcam; debugUIEnabled: false;"
     >
 
-      <!-- ★ここを HIRO から自作マーカーに差し替え -->
+      <!-- ★ 動画をテクスチャとして読み込む -->
+      <a-assets>
+        <video
+          id="myvideo"
+          src="video.mp4"
+          autoplay
+          loop
+          muted
+          playsinline
+        ></video>
+      </a-assets>
+
+      <!-- ★ 自作マーカーの上に動画を貼る -->
       <a-marker
         type="pattern"
         url="start_marker.patt"
       >
-        <!-- マーカーの上に出るテスト用の赤い箱 -->
-        <a-box position="0 0.5 0" depth="0.5" height="0.5" width="0.5" color="red"></a-box>
+        <!-- マーカーと同じくらいの大きさの平面に動画を投影 -->
+        <a-video
+          src="#myvideo"
+          width="1"
+          height="1"
+          position="0 0 0.02"
+        ></a-video>
       </a-marker>
 
       <a-entity camera></a-entity>
