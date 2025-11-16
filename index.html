@@ -57,7 +57,7 @@
         // マーカーが見つかった瞬間に3フレーム目（0.1秒）へジャンプして再生
         marker.addEventListener("markerFound", () => {
           video.pause();
-          video.currentTime = 0.125;   // ★ 3フレーム目（30fps → 3/30 = 0.1秒）
+          video.currentTime = 0.2;   // ★ 3フレーム目（30fps → 3/30 = 0.1秒）
 
           // iPhone対策：少し遅らせて再生
           setTimeout(() => {
